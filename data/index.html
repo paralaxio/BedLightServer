@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LED Control</title>
+    <link href='togglebutton.css' rel='stylesheet' type='text/css'>
+    <link href='main.css' rel='stylesheet' type='text/css'>
+    <link href='clock.css' rel='stylesheet' type='text/css'>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="144x144"  href="/favicon-144x144.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#00878f">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <script src="WebSocket.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <center>
+        <header>
+            <h1>LED Control</h1>
+        </header>
+        <div>
+            <table>
+ 				<tr>
+                    <td style="width:14.4px; text-align: right">Brightness: </td>
+                    <td><input class="enabled" id="brightness" type="range" min="0" max="100" step="1" oninput="sendBrightness();" value="50"></td>
+                </tr>
+				<tr>
+                    <td style="width:14.4px; text-align: right">R: </td>
+                    <td><input class="enabled" id="r" type="range" min="0" max="1023" step="1" oninput="sendRGB();" value="0"></td>
+                </tr>
+                <tr>
+                    <td style="width:14.4px; text-align: right">G: </td>
+                    <td><input class="enabled" id="g" type="range" min="0" max="1023" step="1" oninput="sendRGB();" value="0"></td>
+                </tr>
+                <tr>
+                    <td style="width:14.4px; text-align: right">B: </td>
+                    <td><input class="enabled" id="b" type="range" min="0" max="1023" step="1" oninput="sendRGB();" value="0"></td>
+                </tr>
+
+            </table>
+            <p style="margin:8px 0px">
+				<button id="rainbow" class="button" style="background-color:#999" onclick="rainbowEffect();">On</button>
+			</p>
+       </div>
+       <br>
+        <header>
+            <h1>Alarm</h1>
+        </header>
+        <div>
+            <table>
+                <tr>
+                    <td style="width:14.4px; text-align: right">On: </td>
+                    <td>
+                    		<ul class="tg-list">
+								  <li class="tg-list-item">
+								    <input class="tgl tgl-light" id="cb1" type="checkbox"/>
+								    <label class="tgl-btn" for="cb1"></label>
+								  </li>
+								</ul> 
+                    </td>
+                </tr>
+           </table>
+			<p>
+				<label class="clock">
+					Hours
+					<input type="number" id="hour" value="0" min="0" max="24" />
+				</label>
+
+				<label class="clock">
+					Minutes
+					<input type="number" id="minute" value="0" min="0" max="60" />
+				</label>
+
+				<div>
+					<a id="alarm-set" class="button blue">Set</a>
+				</div>
+			</p>
+		</div>
+       <br>
+        <header>
+            <h1>NTP time</h1>
+        </header>
+        <div>
+			<label id="lastupdate" >Last NTP update: XX:XX</label>
+		</div>
+    </center>
+</body>
+</html>
